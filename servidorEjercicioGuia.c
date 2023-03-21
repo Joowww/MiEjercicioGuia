@@ -43,14 +43,14 @@ int main(int argc, char *argv[])
 		
 		// Ahora recibimos su peticion
 		ret=read(sock_conn,peticion, sizeof(peticion));
-		printf ("Recibida una petición\n");
+		printf ("Recibida una peticiÃ³n\n");
 		// Tenemos que a?adirle la marca de fin de string 
 		// para que no escriba lo que hay despues en el buffer
 		peticion[ret]='\0';
 		
 		//Escribimos la peticion en la consola
 		
-		printf ("La petición es: %s\n",peticion);
+		printf ("La peticiÃ³n es: %s\n",peticion);
 		char *p = strtok(peticion, "/");
 		int codigo =  atoi (p);
 		p = strtok( NULL, "/");
@@ -58,14 +58,23 @@ int main(int argc, char *argv[])
 		strcpy (nombre, p);
 		printf ("Codigo: %d, Nombre: %s\n", codigo, nombre);
 		
-		if (codigo ==1) //piden la longitd del nombre
-			sprintf (respuesta,"%d",strlen (nombre));
+		if (codigo == 1) //piden la longitd del nombre
+			sprintf(respuesta, "%d", strlen(nombre));
+		else if (codigo == 2)
+		// quieren saber si el nombre es bonito
+		    if ((nombre[0] == 'M') || (nombre[0] == 'S'))
+		    strcpy(respuesta, "SI");
+		    else
+		    strcpy(respuesta, "NO");
 		else
-			// quieren saber si el nombre es bonito
-			if((nombre[0]=='M') || (nombre[0]=='S'))
-			strcpy (respuesta,"SI");
+		    {
+			p = strtok(null, "/");
+			float altura = atof(p);
+			if (altura > 1.70)
+			    sprintf(respuesta, "%s: eres alto", nombre);
 			else
-				strcpy (respuesta,"NO");
+			    sprintf(respuesta, "%s: eres bajo", nombre);
+		    }		
 			
 			// Enviamos la respuesta
 			write (sock_conn,respuesta, strlen(respuesta));
