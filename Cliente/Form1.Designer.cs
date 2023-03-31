@@ -38,6 +38,8 @@
             button3 = new Button();
             alturaBox = new TextBox();
             label1 = new Label();
+            button4 = new Button();
+            cntLbl = new Label();
             SuspendLayout();
             // 
             // button1
@@ -98,7 +100,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(92, 212);
+            button2.Location = new Point(764, 230);
             button2.Name = "button2";
             button2.Size = new Size(160, 75);
             button2.TabIndex = 8;
@@ -108,7 +110,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(92, 75);
+            button3.Location = new Point(764, 75);
             button3.Name = "button3";
             button3.Size = new Size(160, 73);
             button3.TabIndex = 9;
@@ -132,11 +134,31 @@
             label1.TabIndex = 11;
             label1.Text = "Altura";
             // 
+            // button4
+            // 
+            button4.Location = new Point(61, 75);
+            button4.Name = "button4";
+            button4.Size = new Size(213, 100);
+            button4.TabIndex = 12;
+            button4.Text = "¿Cuántos servicios?";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // cntLbl
+            // 
+            cntLbl.BorderStyle = BorderStyle.FixedSingle;
+            cntLbl.Location = new Point(70, 230);
+            cntLbl.Name = "cntLbl";
+            cntLbl.Size = new Size(204, 125);
+            cntLbl.TabIndex = 13;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(936, 585);
+            Controls.Add(cntLbl);
+            Controls.Add(button4);
             Controls.Add(label1);
             Controls.Add(alturaBox);
             Controls.Add(button3);
@@ -165,5 +187,7 @@
         private Button button3;
         private TextBox alturaBox;
         private Label label1;
+        private Button button4;
+        private Label cntLbl;
     }
 }
